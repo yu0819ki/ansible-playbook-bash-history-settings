@@ -2,3 +2,6 @@
   sudo: yes
   roles: 
     - role: 'history-settings'
+  vars_prompt:
+    - name: "hist_target_user"
+      prompt: "target user?(default: root)"
