@@ -6,16 +6,16 @@
   register: homedir
 - name: add line HISTSIZE
   lineinfile: dest={{homedir.stdout}}/.bash_profile regexp='^export HISTSIZE' line='export HISTSIZE=2000'
-  when: homedir.stdout != ""
+  when: homedir is defined and homedir.stdout != ""
 - name: add line HISTFILESIZE
   lineinfile: dest={{homedir.stdout}}/.bash_profile regexp='^export HISTFILESIZE' line='export HISTFILESIZE=4000'
-  when: homedir.stdout != ""
+  when: homedir is defined and homedir.stdout != ""
 - name: add line HISTCONTROL
   lineinfile: dest={{homedir.stdout}}/.bash_profile regexp='^export HISTCONTROL' line='export HISTCONTROL=ignoredups'
-  when: homedir.stdout != ""
+  when: homedir is defined and homedir.stdout != ""
 - name: add line HISTTIMEFORMAT
   lineinfile: dest={{homedir.stdout}}/.bash_profile regexp='^export HISTTIMEFORMAT' line='export HISTTIMEFORMAT="%Y-%m-%dT%T%z "'
-  when: homedir.stdout != ""
+  when: homedir is defined and homedir.stdout != ""
 - name: add line HISTIGNORE
   lineinfile: dest={{homedir.stdout}}/.bash_profile regexp='^export HISTIGNORE' line='export HISTIGNORE="ls *:exit:history*"'
-  when: homedir.stdout != ""
+  when: homedir is defined and homedir.stdout != ""
